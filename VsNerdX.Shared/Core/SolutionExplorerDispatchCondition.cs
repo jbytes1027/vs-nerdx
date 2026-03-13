@@ -7,7 +7,6 @@ namespace VsNerdX.Core
     {
         private readonly HierarchyControl hierarchyControl;
         private readonly ILogger logger;
-        private bool canDispatch;
 
         public SolutionExplorerDispatchCondition(HierarchyControl hierarchyControl, ILogger logger)
         {
