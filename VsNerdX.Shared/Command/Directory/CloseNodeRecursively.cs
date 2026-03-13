@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 using VsNerdX.Core;
-using static VsNerdX.Util.TreeHelper;
+using static VsNerdX.VsNerdXPackage;
 
 namespace VsNerdX.Command.Directory
 {
@@ -17,16 +17,12 @@ namespace VsNerdX.Command.Directory
         {
             var selectedNode = this._hierarchyControl.GetSelectedItem();
 
-            if (IsFile(selectedNode)) {
-                TraverseNode(selectedNode, (n) => true, CollapseNode, null);
+            try
+            {
+                Dte.ExecuteCommand("SolutionExplorer.CollapseAllDescendants");
             }
-            else {
-                TraverseNode(
-                    selectedNode,
-                    node => IsDirectory(node) || !IsFile(node) && !IsDirectory(node),
-                    CollapseNode,
-                    null
-                );
+            catch
+            {
             }
 
             return new ExecutionResult(executionContext.Clear(), CommandState.Handled);

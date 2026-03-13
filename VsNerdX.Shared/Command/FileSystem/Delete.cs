@@ -17,28 +17,17 @@ namespace VsNerdX.Command.Navigation
 
         public ExecutionResult Execute(IExecutionContext executionContext, Keys key)
         {
-            var state = CommandState.Handled;
-            if (executionContext.Stack.Count > 0 && executionContext.Stack.Last() == Keys.D && key == Keys.D)
+            try
             {
-                try
-                {
-                    Dte.ExecuteCommand("Edit.Delete");
-                }
-                catch (Exception e) { }
-
-                executionContext = executionContext.Clear();
+                Dte.ExecuteCommand("Edit.Delete");
             }
-            else if (key == Keys.D)
+            catch
             {
-                executionContext = executionContext.Add(key).With(delayedExecutable: this);
-            }
-            else
-            {
-                executionContext = executionContext.Clear();
-                state = CommandState.Cleared;
             }
 
-            return new ExecutionResult(executionContext, state);
+            executionContext = executionContext.Clear();
+
+            return new ExecutionResult(executionContext, CommandState.Handled);
         }
     }
 }
