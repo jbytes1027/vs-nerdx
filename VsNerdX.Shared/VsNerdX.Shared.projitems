@@ -11,19 +11,24 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Command\CommandKey.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Command\CommandState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\Directory\CloseAllNodes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Command\Directory\CloseNodeRecursively.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Command\Directory\CloseParentNode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Command\Directory\OpenNodeRecursively.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Command\Directory\OpenOrCloseNode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Command\ExecutionContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Command\ExecutionResult.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\FileSystem\AddFile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\FileSystem\AddFolder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Command\FileSystem\CopyFile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Command\FileSystem\CopyPath.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Command\FileSystem\CopyText.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Command\FileSystem\CutFile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Command\FileSystem\Delete.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\FileSystem\OpenInFileExplorer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Command\FileSystem\Paste.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Command\FileSystem\Rename.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)command\file\Open.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Command\File\OpenSplit.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Command\File\OpenVSplit.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Command\File\PreviewFile.cs" />
