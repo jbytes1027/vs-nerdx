@@ -70,6 +70,9 @@ namespace VsNerdX.Util
             #if Vs22
             var dte = GetGlobalService<SDTE, _DTE>();
             #endif
+            #if Vs26
+            var dte = GetGlobalService<SDTE, _DTE>();
+            #endif
             return (TService)QueryService(dte, typeof(TService));
         }
 
@@ -85,6 +88,9 @@ namespace VsNerdX.Util
             var dte = GetGlobalService<SDTE, DTE>();
             #endif
             #if Vs22
+            var dte = GetGlobalService<SDTE, _DTE>();
+            #endif
+            #if Vs26
             var dte = GetGlobalService<SDTE, _DTE>();
             #endif
             return GetServiceProvider(dte);
