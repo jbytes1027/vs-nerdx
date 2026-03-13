@@ -4,5 +4,3 @@
 # Install
 Build from source, install the resulting `VsNerdX.vsix`.
 
-Currently supported Visual Studio versions are 2017, 2019, 2022, and 2026.
-
