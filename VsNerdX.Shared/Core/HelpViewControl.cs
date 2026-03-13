@@ -8,7 +8,7 @@ namespace VsNerdX.Core
 {
     public class HelpViewControl
     {
-        
+
         private readonly HierarchyControl _hierarchyControl;
         private StackPanel _helpStackPanel;
         private ScrollViewer _scrollView;
@@ -16,7 +16,7 @@ namespace VsNerdX.Core
 
         public HelpViewControl(IHierarchyControl hierarchyControl)
         {
-            this._hierarchyControl = (HierarchyControl) hierarchyControl;
+            this._hierarchyControl = (HierarchyControl)hierarchyControl;
         }
 
         public void ToggleHelp()
@@ -24,7 +24,7 @@ namespace VsNerdX.Core
             if (_helpStackPanel == null)
             {
                 this.ShowHelp();
-                NavigatorFrame = (Grid) this._hierarchyControl.SolutionHierarchy.GetValue("Frame").GetValue("FrameView").GetValue("Content");
+                NavigatorFrame = (Grid)this._hierarchyControl.SolutionHierarchy.GetValue("Frame").GetValue("FrameView").GetValue("Content");
                 NavigatorFrame.SizeChanged += HierarchyControl_SizeChanged;
                 HierarchyControl_SizeChanged(null, null);
                 this._scrollView.Focus();
@@ -33,14 +33,14 @@ namespace VsNerdX.Core
             {
                 this.HideHelp();
                 this._hierarchyControl.GetHierarchyListBox().Focus();
-                var navigatiorFrame = (Grid) this._hierarchyControl.SolutionHierarchy.GetValue("Frame").GetValue("FrameView").GetValue("Content");
+                var navigatiorFrame = (Grid)this._hierarchyControl.SolutionHierarchy.GetValue("Frame").GetValue("FrameView").GetValue("Content");
                 navigatiorFrame.SizeChanged -= HierarchyControl_SizeChanged;
             }
         }
 
         private void HierarchyControl_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            var navigationContent = (ContentPresenter) NavigatorFrame.GetValue("Content");
+            var navigationContent = (ContentPresenter)NavigatorFrame.GetValue("Content");
             _scrollView.MaxHeight = navigationContent.ActualHeight;
             _scrollView.MaxWidth = navigationContent.ActualWidth;
         }
@@ -54,62 +54,70 @@ namespace VsNerdX.Core
 
         private void ShowHelp()
         {
-            this._scrollView = new ScrollViewer(); 
+            this._scrollView = new ScrollViewer();
             var textBlock = new TextBlock();
-            
-            this._scrollView.FocusVisualStyle = new Style(); 
+
+            this._scrollView.FocusVisualStyle = new Style();
 
             textBlock.TextWrapping = TextWrapping.Wrap;
-            textBlock.Background = new SolidColorBrush(Color.FromRgb(201,203,215));
+            textBlock.Background = new SolidColorBrush(Color.FromRgb(201, 201, 201));
             textBlock.FontSize = 15;
             textBlock.FontFamily = new FontFamily("Consolas");
 
-            textBlock.Inlines.AddRange(new Inline [] {
+            textBlock.Inlines.AddRange(new Inline[] {
                 new Bold(new Run(" VsNerdX " + VsixManifest.GetManifest().Version + " Quick Help")), new LineBreak(),
                 new Bold(new Run("==========================")), new LineBreak(),
+
                 new Bold(new Run(" Directory node mappings")), new LineBreak(),
                 new Run("--------------------------"), new LineBreak(),
                 new Bold(new Run(" o")), new Run(": open & close node"), new LineBreak(),
                 new Bold(new Run(" O")), new Run(": recursively open node"), new LineBreak(),
-                new Bold(new Run(" x")), new Run(": close parent of node"), new LineBreak(),
-                new Bold(new Run(" X")), new Run(": recursively close child nodes"), new LineBreak(), new LineBreak(),
+                new Bold(new Run(" c")), new Run(": close parent of node"), new LineBreak(),
+                new Bold(new Run(" C")), new Run(": recursively close child nodes"), new LineBreak(),
+                new Bold(new Run(" M")), new Run(": close all nodes"), new LineBreak(), new LineBreak(),
 
                 new Bold(new Run(" File node mappings")), new LineBreak(),
                 new Run("--------------------------"), new LineBreak(),
-                new Bold(new Run(" <Enter>")), new Run(": open file"), new LineBreak(),
+                new Bold(new Run(" l")), new Run(": open file"), new LineBreak(),
                 new Bold(new Run(" go")), new Run(": preview file"), new LineBreak(),
-                new Bold(new Run(" i")), new Run(": open split"), new LineBreak(),
-                new Bold(new Run(" s")), new Run(": open vertical split"), new LineBreak(), new LineBreak(),
-                
-                
+                new Bold(new Run(" s")), new Run(": open horizontal split"), new LineBreak(),
+                new Bold(new Run(" v")), new Run(": open vertical split"), new LineBreak(),
+                new Bold(new Run(" e")), new Run(": open in file explorer"), new LineBreak(), new LineBreak(),
+
                 new Bold(new Run(" Tree navigation mappings")), new LineBreak(),
                 new Run("--------------------------"), new LineBreak(),
-                new Bold(new Run(" P")), new Run(": go to parent"), new LineBreak(),
-                new Bold(new Run(" j")), new Run(": go to next sibling"), new LineBreak(),
+                new Bold(new Run(" h")), new Run(": go to parent"), new LineBreak(),
+                new Bold(new Run(" j")), new Run(": go down"), new LineBreak(),
                 new Bold(new Run(" J")), new Run(": go to last child"), new LineBreak(),
-                new Bold(new Run(" k")), new Run(": go to prev sibling"), new LineBreak(),
+                new Bold(new Run(" k")), new Run(": go up"), new LineBreak(),
                 new Bold(new Run(" K")), new Run(": go to first child"), new LineBreak(),
                 new Bold(new Run(" gg")), new Run(": go to top"), new LineBreak(),
                 new Bold(new Run(" G")), new Run(": go to bottom"), new LineBreak(), new LineBreak(),
 
                 new Bold(new Run(" Node editing mappings")), new LineBreak(),
                 new Run("--------------------------"), new LineBreak(),
-                new Bold(new Run(" dd")), new Run(": delete"), new LineBreak(),
-                new Bold(new Run(" cc")), new Run(": cut"), new LineBreak(),
-                new Bold(new Run(" yy")), new Run(": copy"), new LineBreak(),
-                new Bold(new Run(" yp")), new Run(": copy full path"), new LineBreak(),
-                new Bold(new Run(" yw")), new Run(": copy visible text"), new LineBreak(),
+                new Bold(new Run(" a")), new Run(": add file"), new LineBreak(),
+                new Bold(new Run(" A")), new Run(": add folder"), new LineBreak(),
+                new Bold(new Run(" x")), new Run(": delete"), new LineBreak(),
+                new Bold(new Run(" d")), new Run(": cut"), new LineBreak(),
                 new Bold(new Run(" p")), new Run(": paste"), new LineBreak(),
-                new Bold(new Run(" r")), new Run(": rename"), new LineBreak(), new LineBreak(),
+                new Bold(new Run(" r")), new Run(": rename"), new LineBreak(),
+                new Bold(new Run(" yy")), new Run(": copy file"), new LineBreak(),
+                new Bold(new Run(" yp")), new Run(": copy full path"), new LineBreak(),
+                new Bold(new Run(" yw")), new Run(": copy visible text"), new LineBreak(), new LineBreak(),
 
                 new Bold(new Run(" Tree filtering mappings")), new LineBreak(),
                 new Run("--------------------------"), new LineBreak(),
                 new Bold(new Run(" I")), new Run(": toggle show all files"), new LineBreak(), new LineBreak(),
-                
+
+                new Bold(new Run(" Search mappings")), new LineBreak(),
+                new Run("--------------------------"), new LineBreak(),
+                new Bold(new Run(" /")), new Run(": enter find mode"), new LineBreak(),
+                new Bold(new Run(" ?")), new Run(": enter find mode"), new LineBreak(),
+                new Bold(new Run(" Esc")), new Run(": exit find mode / clear command"), new LineBreak(), new LineBreak(),
+
                 new Bold(new Run(" Other mappings")), new LineBreak(),
-                new Run("--------------------------"), new LineBreak(), 
-                new Bold(new Run(" /")), new Run(": enter find Mode"), new LineBreak(),
-                new Bold(new Run(" Esc")), new Run(": exit find Mode"), new LineBreak(),
+                new Run("--------------------------"), new LineBreak(),
                 new Bold(new Run(" ?")), new Run(": toggle help")
             });
 
@@ -135,7 +143,7 @@ namespace VsNerdX.Core
         {
             _scrollView.LineDown();
         }
-        
+
         public void LineUp()
         {
             _scrollView.LineUp();
