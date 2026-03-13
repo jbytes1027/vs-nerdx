@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using VsNerdX.Core;
 
 namespace VsNerdX.Command.Navigation
@@ -17,16 +16,18 @@ namespace VsNerdX.Command.Navigation
         {
             try
             {
-                if (((HierarchyControl) this._hierarchyControl).GetHierarchyListBox().IsKeyboardFocusWithin)
+                if (((HierarchyControl)this._hierarchyControl).GetHierarchyListBox().IsKeyboardFocusWithin)
                 {
                     this._hierarchyControl.GoToBottom();
                 }
                 else
                 {
-                    ((HierarchyControl) this._hierarchyControl).helpViewControl.GoToBottom();
+                    ((HierarchyControl)this._hierarchyControl).helpViewControl.GoToBottom();
                 }
             }
-            catch (Exception e) { }
+            catch
+            {
+            }
 
             return new ExecutionResult(executionContext.Clear(), CommandState.Handled);
         }

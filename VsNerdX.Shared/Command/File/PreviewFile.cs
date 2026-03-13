@@ -26,7 +26,7 @@ namespace VsNerdX.Command.Navigation
                 Dte.ExecuteCommand("SolutionExplorer.ToggleSingleClickPreview");
                 Dte.ExecuteCommand("SolutionExplorer.ToggleSingleClickPreview");
             }
-            catch (Exception e)
+            catch
             {
                 this._hierarchyControl.GoUp();
                 Dte.ExecuteCommand("SolutionExplorer.Folder.ToggleSingleClickPreview");

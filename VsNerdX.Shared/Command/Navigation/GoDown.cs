@@ -26,7 +26,7 @@ namespace VsNerdX.Command.Navigation
                     ((HierarchyControl) this._hierarchyControl).helpViewControl.LineDown();
                 }
             }
-            catch (Exception e)
+            catch
             {
             }
 

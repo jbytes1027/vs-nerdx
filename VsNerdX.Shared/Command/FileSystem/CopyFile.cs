@@ -21,7 +21,10 @@ namespace VsNerdX.Command.Navigation
             {
                 Dte.ExecuteCommand("Edit.Copy");
             }
-            catch (Exception e) { }
+            catch 
+            {
+            }
+
             executionContext = executionContext.Clear().With(mode: InputMode.Normal);
             return new ExecutionResult(executionContext, CommandState.Handled);
         }

@@ -20,7 +20,10 @@ namespace VsNerdX.Command.Navigation
             try
             {
                 Dte.ExecuteCommand("Edit.Paste");
-            } catch (Exception e) { }
+            }
+            catch
+            {
+            }
 
             return new ExecutionResult(executionContext.Clear(), CommandState.Handled);
         }

@@ -23,7 +23,10 @@ namespace VsNerdX.Command.Navigation
                 Dte.ExecuteCommand("View.Open");
                 Dte.ExecuteCommand("Window.NewHorizontalTabGroup");
             }
-            catch (Exception e) { }
+            catch
+            {
+            }
+
             executionContext = executionContext.Clear().With(mode: InputMode.Normal);
             return new ExecutionResult(executionContext, CommandState.Handled);
         }

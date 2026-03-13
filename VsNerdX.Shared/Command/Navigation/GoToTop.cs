@@ -18,16 +18,18 @@ namespace VsNerdX.Command.Navigation
         {
             try
             {
-                if (((HierarchyControl) this._hierarchyControl).GetHierarchyListBox().IsKeyboardFocusWithin)
+                if (((HierarchyControl)this._hierarchyControl).GetHierarchyListBox().IsKeyboardFocusWithin)
                 {
                     this._hierarchyControl.GoToTop();
                 }
                 else
                 {
-                    ((HierarchyControl) this._hierarchyControl).helpViewControl.GoToTop();
+                    ((HierarchyControl)this._hierarchyControl).helpViewControl.GoToTop();
                 }
             }
-            catch (Exception e) { }
+            catch
+            {
+            }
 
             executionContext = executionContext.Clear().With(mode: InputMode.Normal);
             return new ExecutionResult(executionContext, CommandState.Handled);

@@ -17,16 +17,18 @@ namespace VsNerdX.Command.Navigation
         {
             try
             {
-                if (((HierarchyControl) this._hierarchyControl).GetHierarchyListBox().IsKeyboardFocusWithin)
+                if (((HierarchyControl)this._hierarchyControl).GetHierarchyListBox().IsKeyboardFocusWithin)
                 {
                     this._hierarchyControl.GoUp();
                 }
                 else
                 {
-                    ((HierarchyControl) this._hierarchyControl).helpViewControl.LineUp();
+                    ((HierarchyControl)this._hierarchyControl).helpViewControl.LineUp();
                 }
             }
-            catch (Exception e) { }
+            catch
+            {
+            }
 
             return new ExecutionResult(executionContext.Clear(), CommandState.Handled);
         }

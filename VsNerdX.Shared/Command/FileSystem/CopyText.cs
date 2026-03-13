@@ -22,7 +22,7 @@ namespace VsNerdX.Command.Navigation
             {
                 name = (string) selectedItem.GetValue("Item").GetValue("SourceItem").GetValue("Text");
             }
-            catch (NullReferenceException e)
+            catch (NullReferenceException)
             {
                 name = (string) selectedItem.GetValue("Item").GetValue("Text");
             }
