@@ -38,9 +38,11 @@ namespace VsNerdX
             // When initialized asynchronously, the current thread may be a background thread at this point.
             // Do any initialization that requires the UI thread after switching to the UI thread.
 
-            _logger.Log("VSNerd initializing in the background");
             BackgroundThreadInitialization();
+
+            _logger.Log("VSNerd Switching to main thread");
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+
             _logger.Log("VSNerd loading on main thread");
             Dte = await GetServiceAsync(typeof(_DTE)) as DTE2;
             var solutionExplorerControl = new HierarchyControl(this, _logger);
