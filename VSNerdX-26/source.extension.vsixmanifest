@@ -7,7 +7,7 @@
         <License>LICENSE.txt</License>
         <Icon>Icon.png</Icon>
         <PreviewImage>Preview.png</PreviewImage>
-        <Tags>Vim, NERD-Tree,  Solution Explorer, Navigation, Tree</Tags>
+        <Tags>Vim, NERD-Tree, Solution Explorer, Navigation, Tree</Tags>
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0, )">
@@ -27,6 +27,6 @@
         <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[17.0, )" DisplayName="Visual Studio core editor" />
     </Prerequisites>
     <Assets>
-        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+      <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
     </Assets>
 </PackageManifest>
