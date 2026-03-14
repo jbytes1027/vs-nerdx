@@ -98,6 +98,7 @@
     <Compile Include="Dispatcher\KeyDispatcher.cs" />
     <Compile Include="Dispatcher\NativeMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\ActivityLogger.cs" />
     <Compile Include="Util\AsyncPackageHelpers.cs" />
     <Compile Include="Util\AsyncPackageRegistrationAttribute.cs" />
     <Compile Include="Util\DebugLogger.cs" />
