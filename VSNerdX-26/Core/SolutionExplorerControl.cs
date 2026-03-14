@@ -158,6 +158,10 @@ namespace VsNerdX.Core
         public ListBox GetHierarchyListBox()
         {
             SolutionHierarchy = VsShellUtilities.GetUIHierarchyWindow(ServiceLocator.GetInstance<IServiceProvider>(), VSConstants.StandardToolWindows.SolutionExplorer);
+            if (SolutionHierarchy == null)
+            {
+                return null;
+            }
 
             ContentGrid = SolutionHierarchy.GetValue("Content") as Panel;
             if (ContentGrid == null || ContentGrid.Children.Count == 0)
@@ -166,7 +170,7 @@ namespace VsNerdX.Core
             }
 
             ContentPresenter = ContentGrid.Children[0] as ContentPresenter;
-            if (ContentPresenter == null)
+            if (ContentPresenter == null || ContentPresenter.Content is null)
             {
                 return null;
             }
