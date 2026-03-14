@@ -13,7 +13,7 @@ namespace VsNerdX.Dispatcher
         private readonly IKeyDispatcher dispatcher;
         private IntPtr hookId = IntPtr.Zero;
 
-        public ConditionalKeyDispatcher(IDispatchCondition condition, IKeyDispatcher dispatcher, DebugLogger logger)
+        public ConditionalKeyDispatcher(IDispatchCondition condition, IKeyDispatcher dispatcher, ILogger logger)
         {
             if (ConditionalKeyDispatcher.activeInstance != null)
             {
@@ -54,7 +54,7 @@ namespace VsNerdX.Dispatcher
                 this.RemoveHook();
                 return result;
             }
-        }
+       }
 
         private void RemoveHook()
         {
@@ -82,7 +82,7 @@ namespace VsNerdX.Dispatcher
         }
 
         private bool disposedValue = false;
-        private DebugLogger  logger;
+        private ILogger  logger;
 
         ~ConditionalKeyDispatcher()
         {

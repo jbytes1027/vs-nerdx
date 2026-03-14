@@ -9,7 +9,7 @@ using VsNerdX.Core;
 using VsNerdX.Dispatcher;
 using System.Threading;
 using System;
-using DebugLogger = VsNerdX.Util.DebugLogger;
+using OutputWindowLogger = VsNerdX.Util.OutputWindowLogger;
 
 namespace VsNerdX
 {
@@ -24,7 +24,7 @@ namespace VsNerdX
 
         private CommandProcessor _commandProcessor;
         private ConditionalKeyDispatcher _keyDispatcher;
-        private DebugLogger _logger;
+        private Util.ILogger _logger;
 
         /// <summary>
         /// Initialization of the package; this method is called right after the package is sited, so this is the place
@@ -37,11 +37,10 @@ namespace VsNerdX
         {
             // When initialized asynchronously, the current thread may be a background thread at this point.
             // Do any initialization that requires the UI thread after switching to the UI thread.
+            Instance = this;
 
-            BackgroundThreadInitialization();
-
-            _logger.Log("VSNerd Switching to main thread");
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+            _logger = await OutputWindowLogger.CreateAsync(this);
 
             _logger.Log("VSNerd loading on main thread");
             Dte = await GetServiceAsync(typeof(_DTE)) as DTE2;
@@ -53,12 +52,6 @@ namespace VsNerdX
                 new SolutionExplorerDispatchCondition(solutionExplorerControl, _logger),
                 new KeyDispatcher(_commandProcessor),
                 _logger);
-        }
-
-        private void BackgroundThreadInitialization()
-        {
-            _logger = new DebugLogger();
-            Instance = this;
         }
 
         protected override void Dispose(bool disposing)

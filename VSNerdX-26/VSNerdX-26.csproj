@@ -104,6 +104,7 @@
     <Compile Include="Util\DebugLogger.cs" />
     <Compile Include="Util\ExtensionMethods.cs" />
     <Compile Include="Util\ILogger.cs" />
+    <Compile Include="Util\OutputWindowLogger.cs" />
     <Compile Include="Util\ServiceLocator.cs" />
     <Compile Include="Util\TreeHelper.cs" />
     <Compile Include="Util\VsixManifest.cs" />
